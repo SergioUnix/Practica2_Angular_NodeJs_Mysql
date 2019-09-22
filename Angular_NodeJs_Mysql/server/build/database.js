@@ -1,9 +1,9 @@
 "use strict";
-var mysql = require('mysql');
-var promisify = require('util').promisify;
-var database = require('./keys').database;
-var pool = mysql.createPool(database);
-pool.getConnection(function (err, connection) {
+const mysql = require('mysql');
+const { promisify } = require('util');
+const { database } = require('./keys');
+const pool = mysql.createPool(database);
+pool.getConnection((err, connection) => {
     if (err) {
         if (err.code == 'PROTOCOL_CONNECTION_LOST') {
             console.error('DATABASE CONNECTION WAS CLOSED');

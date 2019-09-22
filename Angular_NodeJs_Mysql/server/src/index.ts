@@ -3,9 +3,9 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
-import gamesRoutes from './routes/gamesRoutes';
-
-
+import productosRoutes from './routes/productosRoutes';
+import proveedoresRoutes from './routes/proveedoresRoutes';
+import usuariosRoutes from './routes/usuariosRoutes';
 
 class Server {
 
@@ -30,7 +30,9 @@ class Server {
 
     routes(): void{
         this.app.use('/',indexRoutes);
-        this.app.use('/api/games',gamesRoutes);
+        this.app.use('/api/productos',productosRoutes);
+        this.app.use('/api/proveedores',proveedoresRoutes);
+        this.app.use('/api/usuarios',usuariosRoutes);
     }
 
     

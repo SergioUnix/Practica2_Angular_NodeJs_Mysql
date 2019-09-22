@@ -4,6 +4,6 @@ module.exports = {
         host: 'localhost',
         user: 'root',
         password: 'xUNIX..UNIX',
-        database: 'ng_games_db'
+        database: 'practica2'
     }
 };
