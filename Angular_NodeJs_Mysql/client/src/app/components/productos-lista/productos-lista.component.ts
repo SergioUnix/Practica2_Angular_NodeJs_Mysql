@@ -9,6 +9,11 @@ import { Usuario } from 'src/app/modelos/Usuario';
   styleUrls: ['./productos-lista.component.css']
 })
 export class ProductosListaComponent implements OnInit {
+
+  public admin_funcion = false;
+  public asistente_funcion = false;
+  public cliente_funcion = false;
+  public usuario_activo='';
   
   @HostBinding('class') classes='row';  //necesario para desplegar un juego a la par de otro 
   productos: any=[];
@@ -17,14 +22,45 @@ export class ProductosListaComponent implements OnInit {
   constructor(private productosService: ProductosService,private router: Router,private activatedRoute: ActivatedRoute,private usuariosService:UsuariosService) { }
 
   ngOnInit() { 
-    const sesion =this.usuariosService.getSesion();
-    console.log(sesion);
-    this.getProductos();
+    //Obtener Sesion
+    let  cod= this.usuariosService.getSesionCod()
+
+    if(this.usuariosService.getSesionNombre()==''){
+      console.log("No Logeado --productos-lista");
+      this.router.navigate(['/login']);
+    }
+ 
+    
+    
+    
+    
+    
+      ///obtiene todos los productos
+        this.getProductos();
+      ///Obtiene datos del logueo
+        this.onCheckUser();
    
     
 
     
   }
+
+
+  onCheckUser(): void {
+    if (this.usuariosService.getSesionTipo()=='1') {
+      this.admin_funcion = true; 
+      this.asistente_funcion=true;
+      this.cliente_funcion=true;   
+    } else if(this.usuariosService.getSesionTipo()=='2') {
+      this.asistente_funcion = true;
+      this.cliente_funcion=true;   
+    }else if(this.usuariosService.getSesionTipo()=='3') {
+      this.cliente_funcion = true;
+      this.asistente_funcion=true;
+  }
+  }
+
+
    /// Mostrar la lista de juegos
 
    getProductos(){
@@ -57,7 +93,12 @@ this.productosService.deleteProducto(id).subscribe(  ///
 );
    }
  
-
+logOut(){
+localStorage.removeItem("nombre");
+localStorage.removeItem("cod_usuario");
+localStorage.removeItem("usuario");
+this.router.navigate(['/login']);
+}
 
 
 

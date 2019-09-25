@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding  } from '@angular/core';
 import {Route, Router, ActivatedRoute} from '@angular/router'; /// sierve para cuando guarde me redireccione a la vista games
 import { Producto } from 'src/app/modelos/Producto';   //importo el tipo de dato,
 import {ProductosService} from '../../servicios/productos.service'; ///importo el servicio
+import {UsuariosService} from '../../servicios/usuarios.service'; 
 
 
 @Component({
@@ -25,9 +26,17 @@ export class ProductoFormComponent implements OnInit {
   edit:boolean =false;  ///si este esta en falso significa que quiero guardar un elemento, si esta en verdadero quiero actualizar un producto
   accion: string='Agregar Producto';
 
-  constructor (private productosService: ProductosService, private router: Router, private activatedRoute:ActivatedRoute) { }
+  constructor (private usuariosService: UsuariosService,private productosService: ProductosService, private router: Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    //sino esta logueado me redirecciona al login
+    if(this.usuariosService.getSesionNombre()==''){
+      console.log("No Logeado --productos-lista");
+      this.router.navigate(['/login']);
+    }
+   
+
+
 
     const params =this.activatedRoute.snapshot.params;
     console.log(params);

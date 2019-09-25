@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {UsuariosService} from './servicios/usuarios.service'; ///importo el servicio
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client';
+  title = '';
+  public isLogged = true;
+
+mostrarMenu:boolean =false;
+constructor(private usuariosService:UsuariosService ){}
+
+
+ngOnInit() { 
+this.onCheckUser();
+
+
+}
+
+ onCheckUser(): void {
+    if (this.usuariosService.getSesionNombre()=='') {
+      this.isLogged = false;    
+    } else {
+      this.isLogged = true;   
+    }
+  }
+
+
 }

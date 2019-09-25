@@ -14,8 +14,7 @@ import {ProductosService} from './servicios/productos.service';
 import { ProveedorFormComponent } from './components/proveedor-form/proveedor-form.component';  ///Aca importo los servicios
 import {ProveedoresService} from './servicios/proveedores.service';
 import { LoginComponent } from './components/login/login.component';
-
-
+import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-registro.component';
 
 
 @NgModule({
@@ -29,6 +28,8 @@ import { LoginComponent } from './components/login/login.component';
     ProductoProveedorComponent,
     ProveedorFormComponent,
     LoginComponent,
+    UsuarioRegistroComponent
+    
 
   ],
   imports: [

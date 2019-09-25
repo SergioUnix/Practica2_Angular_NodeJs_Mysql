@@ -4,6 +4,8 @@ import {ProductoFormComponent} from './components/producto-form/producto-form.co
 import {ProductosListaComponent} from './components/productos-lista/productos-lista.component'; //importamos componente
 import {ProveedorFormComponent} from './components/proveedor-form/proveedor-form.component'; //importamos componente
 import {LoginComponent} from './components/login/login.component'; //importamos componente
+import {UsuarioRegistroComponent} from './components/usuario-registro/usuario-registro.component'; //importamos componente
+import { UsuarioFormComponent } from './components/usuario-form/usuario-form.component';
 
 
 const routes: Routes = [
@@ -11,7 +13,7 @@ const routes: Routes = [
   
 {
   path: '',
-  redirectTo: '/productos',
+  redirectTo: '/login',
   pathMatch: 'full'
   
   },
@@ -30,17 +32,21 @@ const routes: Routes = [
     component: ProductoFormComponent
     },
     {
-      path: 'proveedores',
-      component: ProveedorFormComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-        },
-      {
-      path: 'login/:nickname/pass',
-      component: LoginComponent
-      }
+    path: 'proveedores',
+    component: ProveedorFormComponent
+    },
+    {
+    path: 'login',
+    component: LoginComponent
+    },
+    {
+    path: 'login/:nickname/pass',
+    component: LoginComponent
+    },
+    {
+    path: 'registro',
+    component: UsuarioRegistroComponent
+    }
 
         
 ];

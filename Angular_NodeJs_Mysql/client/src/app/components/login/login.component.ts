@@ -26,20 +26,26 @@ export class LoginComponent implements OnInit {
   constructor(private usuariosService: UsuariosService, private router: Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    console.log(this.usuario); 
+
+    ///si esta logueado redirecciona a productos
+    if(this.usuariosService.getSesionNombre()==''){
+      console.log("No Logeado --productos-lista");
+     
+    }else{this.router.navigate(['/productos']);}
   }
 
-  getUsuario(){
-    
-  ///console.log(this.usuario);
-    
+  setUsuario(){    
   this.usuariosService.loginUsuario(this.usuario.nickname,this.usuario.password)
   .subscribe(
-    res=> {
-     /// console.log(res);
+    res=> { 
+     
       this.usuario=res;
       this.usuariosService.setSesion(this.usuario);
+      this.usuariosService.setlog();
       
-      this.router.navigate(['/productos']);
+     // this.router.navigate(['/productos']);
+    location.reload();
     },
     err=> console.error(err)
 

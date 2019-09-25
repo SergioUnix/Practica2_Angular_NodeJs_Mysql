@@ -6,6 +6,7 @@ import indexRoutes from './routes/indexRoutes';
 import productosRoutes from './routes/productosRoutes';
 import proveedoresRoutes from './routes/proveedoresRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
+import producto_proveedorRoutes from './routes/producto_proveedor';
 
 class Server {
 
@@ -33,6 +34,7 @@ class Server {
         this.app.use('/api/productos',productosRoutes);
         this.app.use('/api/proveedores',proveedoresRoutes);
         this.app.use('/api/usuarios',usuariosRoutes);
+        this.app.use('/api/producto_proveedor', producto_proveedorRoutes);
     }
 
     
