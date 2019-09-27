@@ -13,9 +13,16 @@ export class NavigationComponent implements OnInit {
   public cliente_funcion = false;
   public usuario_activo='';
 
+
+
   constructor(private usuariosService:UsuariosService, private router: Router) { }
 
   ngOnInit() {
+    
+    
+
+
+
 
    this.onCheckUser();
    console.log(this.usuariosService.getSesionTipo());

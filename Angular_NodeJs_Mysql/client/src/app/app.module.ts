@@ -15,6 +15,7 @@ import { ProveedorFormComponent } from './components/proveedor-form/proveedor-fo
 import {ProveedoresService} from './servicios/proveedores.service';
 import { LoginComponent } from './components/login/login.component';
 import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-registro.component';
+import { CarritoListaComponent } from './components/carrito-lista/carrito-lista.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-
     ProductoProveedorComponent,
     ProveedorFormComponent,
     LoginComponent,
-    UsuarioRegistroComponent
+    UsuarioRegistroComponent,
+    CarritoListaComponent
     
 
   ],

@@ -45,7 +45,7 @@ export class ProductosListaComponent implements OnInit {
     
   }
 
-
+ ////dar privilegios a a las funciones
   onCheckUser(): void {
     if (this.usuariosService.getSesionTipo()=='1') {
       this.admin_funcion = true; 
@@ -61,38 +61,40 @@ export class ProductosListaComponent implements OnInit {
   }
 
 
-   /// Mostrar la lista de juegos
+   /// Mostrar la lista de productos
 
    getProductos(){
     this.productosService.getProductos().subscribe(  /// 
       res => {
         this.productos = res;    ///aca almaceno la respuesta que me devuelve, y luego utilizarlo en la lista
-       
-
-      },
+       },
       err => console.error(err)
     );
-
   }
 
 
 
   ///Metodo para eliminar un juego atravez del id
   deleteProducto(id: string){
-console.log(id);
-this.productosService.deleteProducto(id).subscribe(  /// 
-    
-  res => {
-    
-    //this.router.navigate(['/games']);
+  this.productosService.deleteProducto(id).subscribe(  /// 
+  res => {    
     this.getProductos();     //pido el meodo de pintar los juegos para que se vea el cambio a la hora de eliminar uno y desaparezca
-    console.log(res);    ///
-
-  },
+   },
   err => console.error(err)
-);
+    );
    }
- 
+
+     /// metodo para cambiar estado de carrito de Disponible a Carrito
+  agregarACarrito(id: string){
+   this.productosService.updateProductoCarrito(id).subscribe(  /// 
+   res => {    
+   this.getProductos();     //pido el meodo de pintar los juegos para que se vea el cambio a la hora de eliminar uno y desaparezca
+  },
+   err => console.error(err)
+   );
+  }
+     
+   
 logOut(){
 localStorage.removeItem("nombre");
 localStorage.removeItem("cod_usuario");

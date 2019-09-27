@@ -9,7 +9,7 @@ import {UsuariosService} from './servicios/usuarios.service'; ///importo el serv
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = '';
+  public title = 'variable';
   public isLogged = true;
 
 mostrarMenu:boolean =false;

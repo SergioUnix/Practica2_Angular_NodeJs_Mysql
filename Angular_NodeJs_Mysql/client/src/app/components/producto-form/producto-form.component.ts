@@ -17,8 +17,8 @@ export class ProductoFormComponent implements OnInit {
   producto: Producto ={
       cod_producto: 0,
       nombre: '',
-      cantidad_disp: '',
       precio: 0,
+      estado:'',
      
      
   };

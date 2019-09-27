@@ -5,7 +5,8 @@ import {ProductosListaComponent} from './components/productos-lista/productos-li
 import {ProveedorFormComponent} from './components/proveedor-form/proveedor-form.component'; //importamos componente
 import {LoginComponent} from './components/login/login.component'; //importamos componente
 import {UsuarioRegistroComponent} from './components/usuario-registro/usuario-registro.component'; //importamos componente
-import { UsuarioFormComponent } from './components/usuario-form/usuario-form.component';
+import { CarritoListaComponent } from './components/carrito-lista/carrito-lista.component';
+import { FacturaFormComponent } from './components/factura-form/factura-form.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,14 @@ const routes: Routes = [
     {
     path: 'registro',
     component: UsuarioRegistroComponent
+    },
+    {
+    path: 'carrito',
+    component: CarritoListaComponent
+    },
+  {
+    path: 'facturas',
+    component: FacturaFormComponent
     }
 
         

@@ -10,28 +10,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const pool = require('../database');
-class ProductosController {
-    // Obtengo una lista de los productos disponibles
+class FacturasController {
+    // Obtengo una lista de los productos registrados
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const productos = yield pool.query("SELECT * FROM producto where estado='Disponible'");
-            res.json(productos);
-        });
-    }
-    // Obtengo una lista de los productos con el estado de Carrito
-    listCarrito(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const productos = yield pool.query("SELECT * FROM producto where estado='Carrito'");
-            res.json(productos);
+            const facturas = yield pool.query('SELECT * FROM producto');
+            res.json(facturas);
         });
     }
     //Obtengo solo un producto
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const productos = yield pool.query('SELECT * FROM producto WHERE cod_producto =?', [id]);
-            if (productos.length > 0) {
-                return res.json(productos[0]);
+            const facturas = yield pool.query('SELECT * FROM producto WHERE cod_producto =?', [id]);
+            if (facturas.length > 0) {
+                return res.json(facturas[0]);
             }
             else {
                 res.status(404).json({ text: 'El producto no existe ' });
@@ -52,31 +45,6 @@ class ProductosController {
         pool.query('DELETE FROM producto WHERE cod_producto =?', [id]);
         res.json({ messaage: 'El producto fue eliminado' });
     }
-    //// actualiza solo el estado de Disponible a Carrito
-    updateCarrito(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield pool.query("UPDATE producto set estado='Carrito' WHERE  cod_producto=?", [id]);
-            res.json({ massage: 'Cambio de estado de Disponible a Carrito' });
-        });
-    }
-    //// actualiza solo el estado de carrito a Disponible
-    updateDisponible(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield pool.query("UPDATE producto set estado='Disponible' WHERE  cod_producto=?", [id]);
-            res.json({ massage: 'Cambio de estado de Disponible a Carrito' });
-        });
-    }
-    //// actualiza solo el estado de carrito a Vendido
-    updateVendido(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            yield pool.query("UPDATE producto set estado='Vendido' WHERE  cod_producto=?", [id]);
-            res.json({ massage: 'Cambio de estado de Disponible a Carrito' });
-        });
-    }
-    /// Actualiza todo los datos del producto
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
@@ -85,4 +53,4 @@ class ProductosController {
         });
     }
 }
-exports.productosController = new ProductosController();
+exports.facturasController = new FacturasController();

@@ -19,25 +19,25 @@
                         <label for="usuario.apellido">Nombre</label>
                         <input id="nombre" name="nombre"
                             class="form-control" type="text"
-                            placeholder="nombre" [(ngModel)]="usuario.nombre" autocomplete="off" autofocus>
+                            placeholder="nombre" [(ngModel)]="usuario.nombre" autocomplete="off" autofocus required>
                     </div> 
                     <div class="form-group">
                             <label for="apellido">Apellido</label>
                             <input id="apellido" name="apellido"
                             class="form-control" type="text"
-                            placeholder="apellido" [(ngModel)]="usuario.apellido" autocomplete="off">
+                            placeholder="apellido" [(ngModel)]="usuario.apellido" autocomplete="off" required>
                     </div> 
                     <div class="form-group">
                         <label for="nickname">Nickname</label>
                         <input id="nickname" name="nickname"
                             class="form-control" type="text"
-                            placeholder="Nickname" [(ngModel)]="usuario.nickname" autocomplete="off">
+                            placeholder="Nickname" [(ngModel)]="usuario.nickname" autocomplete="off" required>
                     </div>                    
                     <div class="form-group">
                         <label for="palabraSecreta">Contraseña</label>
                         <input id="palabraSecreta" name="palabraSecreta"
                             class="form-control" type="password"
-                            placeholder="Contraseña" [(ngModel)]="usuario.password" autocomplete="off">
+                            placeholder="Contraseña" [(ngModel)]="usuario.password" autocomplete="off" required>
                     </div>
                     <button  class="btn btn-primary mb-2"(click)="setUsuario()" routerLink="">
                         Registrar

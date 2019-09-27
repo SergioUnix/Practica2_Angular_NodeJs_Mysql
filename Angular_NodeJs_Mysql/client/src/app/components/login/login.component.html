@@ -11,13 +11,13 @@
                         <label for="nickname">Nickname</label>
                         <input id="nickname" name="nickname"
                             class="form-control" type="text"
-                            placeholder="Nickname" [(ngModel)]="usuario.nickname" autocomplete="off" autofocus>
+                            placeholder="Nickname" [(ngModel)]="usuario.nickname" autocomplete="off" required autofocus >
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña</label>
                         <input id="password" name="password"
                             class="form-control" type="password"
-                            placeholder="Contraseña" [(ngModel)]="usuario.password" autocomplete="off">
+                            placeholder="Contraseña" [(ngModel)]="usuario.password" autocomplete="off" required>
                     </div>
                     <button  class="btn btn-primary mb-2"(click)="setUsuario()" routerLink="/productos">
                         Entrar

@@ -10,12 +10,12 @@
             
             <div class="card-body">
                 <i class="fas fa-photo-video"></i>
-                <p>Cantidad Disponible : {{producto.cantidad_disp}}</p>
+                <p>Estado  : {{producto.estado}}</p>
                 <p>Precio de Producto :  {{producto.precio}}</p>
                 <a [routerLink]="['/productos/modificar', producto.cod_producto]" class="btn btn-info btn-block" *ngIf="admin_funcion">
                     <i class="fas fa-pen"></i> Editar Producto
                 </a>
-                <a [routerLink]="" class="btn btn-warning btn-block" *ngIf="cliente_funcion">
+                <a class="btn btn-secondary btn-block" (click)="agregarACarrito(producto.cod_producto)" *ngIf="cliente_funcion">
                 <i class="fas fa-plus"></i> Agregar a Carrito
                 </a>
             </div>

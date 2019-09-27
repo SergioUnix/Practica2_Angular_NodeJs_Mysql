@@ -2,11 +2,18 @@ import {Request, Response} from 'express';
 const pool = require ('../database');
 
 class ProductosController{
-    // Obtengo una lista de los productos registrados
+    // Obtengo una lista de los productos disponibles
     public async list(req: Request, res: Response ){ 
-    const productos =await pool.query('SELECT * FROM producto');
+    const productos =await pool.query("SELECT * FROM producto where estado='Disponible'");
     res.json(productos);  
     }
+
+    // Obtengo una lista de los productos con el estado de Carrito
+    public async listCarrito(req: Request, res: Response ){ 
+        const productos =await pool.query("SELECT * FROM producto where estado='Carrito'");
+        res.json(productos);  
+        }
+
     //Obtengo solo un producto
     public async getOne(req: Request, res: Response ): Promise<any>{    
     const {id} =req.params;
@@ -29,7 +36,26 @@ class ProductosController{
         res.json({messaage: 'El producto fue eliminado'});
         
     }
+//// actualiza solo el estado de Disponible a Carrito
+    public async updateCarrito(req: Request, res: Response ){
+        const {id}=req.params;
+        await pool.query("UPDATE producto set estado='Carrito' WHERE  cod_producto=?", [id]);
+        res.json({massage: 'Cambio de estado de Disponible a Carrito'});
+    }
+//// actualiza solo el estado de carrito a Disponible
+public async updateDisponible(req: Request, res: Response ){
+    const {id}=req.params;
+    await pool.query("UPDATE producto set estado='Disponible' WHERE  cod_producto=?", [id]);
+    res.json({massage: 'Cambio de estado de Disponible a Carrito'});
+}
+//// actualiza solo el estado de carrito a Vendido
+public async updateVendido(req: Request, res: Response ){
+    const {id}=req.params;
+    await pool.query("UPDATE producto set estado='Vendido' WHERE  cod_producto=?", [id]);
+    res.json({massage: 'Cambio de estado de Disponible a Carrito'});
+}
 
+    /// Actualiza todo los datos del producto
     public async update(req: Request, res: Response ){
         const {id}=req.params;
         await pool.query('UPDATE producto set ? WHERE  cod_producto=?', [req.body,id]);

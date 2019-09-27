@@ -18,6 +18,11 @@ export class ProductosService {
  getProductos(){
   return this.http.get(`${this.API_URI}/productos`);
    }
+  //metodo para pedir productos
+  getProductosVendidos(){
+    return this.http.get(`${this.API_URI}/productos/carrito`);
+     }
+
  //metodo para obtener productos
  getProducto(id: string){
    return this.http.get(`${this.API_URI}/productos/${id}`);
@@ -37,8 +42,19 @@ export class ProductosService {
    return this.http.put(`${this.API_URI}/productos/${id}`, updatedProducto);
    
    }
- 
 
+  //metodo de actualizar producto
+  updateProductoCarrito(id:string) {
+    return this.http.put(`${this.API_URI}/productos/carrito/${id}`,[]);
+        }
+  //metodo de actualizar producto
+  updateProductoCarritoDis(id:string) {
+    return this.http.put(`${this.API_URI}/productos/carritoDis/${id}`,[]);
+        }
+  //metodo de actualizar producto
+  updateProductoCarritoVen(id:string) {
+    return this.http.put(`${this.API_URI}/productos/carritoVen/${id}`,[]);
+        }        
 
 
 }

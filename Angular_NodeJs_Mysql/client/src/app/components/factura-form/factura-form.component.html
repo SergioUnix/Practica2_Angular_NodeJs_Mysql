@@ -1,1 +1,21 @@
-<p>factura-form works!</p>
+<div class="col-md-4" *ngFor ="let factura of facturas">
+        <div class="card text-center">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <i class="fas fa-caret-right"></i>Numero de Factura:  {{factura.cod_factura}}
+
+            </div>
+            <img [src]="" class="card-img-top">
+            
+            <div class="card-body">
+                <i class="fas fa-photo-video"></i>
+                <p>Nit : {{factura.nit}}</p>
+                <p>Fecha:  {{factura.fecha}}</p>
+                <p>Nombre : {{factura.nombre}}</p>
+                <p>Codigo Usuario:  {{factura.cod_usuario}}</p>
+
+
+               
+            </div>
+        </div>
+    
+    </div>
