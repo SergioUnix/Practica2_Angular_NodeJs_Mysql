@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ProductosService } from 'src/app/servicios/productos.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Detalle, Factura } from 'src/app/modelos/Detalle'; 
+import { Detalle} from 'src/app/modelos/Detalle'; 
 import { FacturaGuardada } from 'src/app/modelos/FacturaGuardada'; 
 import {UsuariosService} from '../../servicios/usuarios.service';
 import {FacturasService} from '../../servicios/facturas.service'
@@ -83,7 +83,7 @@ export class CarritoListaComponent implements OnInit {
     );
   }
 
-     /// metodo para cambiar estado de carrito de Disponible a Carrito
+     /// metodo para cambiar estado de carrito de Carrito a Disponible
      quitarACarrito(id: string){
       this.productosService.updateProductoCarritoDis(id).subscribe(  /// 
       res => {    
@@ -94,7 +94,7 @@ export class CarritoListaComponent implements OnInit {
      }
 
 
-      /// metodo para cambiar estado de carrito de Disponible a Carrito
+      /// metodo para cambiar estado de carrito de Carrito a vendido
       Vendido(id: string){
         this.productosService.updateProductoCarritoVen(id).subscribe(  /// 
         res => {    
@@ -110,37 +110,48 @@ for (let i of this.productos) {
   console.log(i.cod_producto); 
   this.quitarACarrito(i.cod_producto.toString());
   this.getProductosCarrito();
+  location.reload();
 }}
 
 
-  /// Facturar
-compra(){
+//crear Factura
+crearfactura(){
+
 delete this.facturaguardada.cod_factura;
 delete this.facturaguardada.fecha;
 delete this.facturaguardada.nombre;
 let cod=this.usuariosService.getSesionCod();
 this.facturaguardada.cod_usuario_fk=parseInt(cod);
+  this.facturasService.saveFactura(this.facturaguardada).subscribe(
+    res=> {console.log('Factura creada');
+    this.compra();
+    
+  
+  },
+    err => console.error(err)
+  );
+  
+}
 
-let respuesta;
 
-this.facturasService.saveFactura(this.facturaguardada).subscribe(
-  res=> {console.log('Factura creada');
 
-},
-  err => console.error(err)
-);
+  /// Facturar
+compra(){
 
+  let respuesta;
+  let cod=this.usuariosService.getSesionCod();
 this.facturasService.getUltimaFactura(cod.toString()).subscribe(
   res=> {console.log('ultimo registro');
           respuesta =res; // recibe {cod_factura= 0}
 
           for (let i of this.productos) {
-
+            console.log(this.detalle);
             this.detalle.cod_factura_fk=parseInt(respuesta.cod_factura);
+
             this.detalle.cod_producto_fk= parseInt(i.cod_producto);
             console.log(this.detalle);
 
-            //console.log(i.cod_producto); 
+            console.log(i.cod_producto); 
             this.guardarDetalle(this.detalle);
           }
  this.pasarAvendido();         

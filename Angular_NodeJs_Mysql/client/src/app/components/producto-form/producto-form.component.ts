@@ -39,7 +39,7 @@ export class ProductoFormComponent implements OnInit {
 
 
     const params =this.activatedRoute.snapshot.params;
-    console.log(params);
+    //console.log(params);
     if(params.id){        //este params.id me detecta el numero
       this.productosService.getProducto(params.id)
         .subscribe(

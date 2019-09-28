@@ -13,6 +13,7 @@ export class NavigationComponent implements OnInit {
   public cliente_funcion = false;
   public usuario_activo='';
 
+  public buscar='';
 
 
   constructor(private usuariosService:UsuariosService, private router: Router) { }
@@ -49,6 +50,9 @@ export class NavigationComponent implements OnInit {
       this.asistente_funcion=true;
   }
   }
+
+
+ 
 
   logOut(){
     this.usuariosService.OutSesion();

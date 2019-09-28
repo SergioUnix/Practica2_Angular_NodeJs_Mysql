@@ -1,52 +1,59 @@
-import {Component, OnInit, HostBinding } from '@angular/core';
-import {ProductosService} from '../../servicios/productos.service'; ///importo los servicios aca
+import { Component, OnInit, HostBinding } from '@angular/core';
 import {Route, Router, ActivatedRoute} from '@angular/router';
-import {UsuariosService} from '../../servicios/usuarios.service';
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
+import { ProductosService } from 'src/app/servicios/productos.service';
 import { AsociarService } from 'src/app/servicios/asociar.service';
-
 @Component({
-  selector: 'app-productos-lista',
-  templateUrl: './productos-lista.component.html',
-  styleUrls: ['./productos-lista.component.css']
+  selector: 'app-buscar',
+  templateUrl: './buscar.component.html',
+  styleUrls: ['./buscar.component.css']
 })
-export class ProductosListaComponent implements OnInit {
-
+export class BuscarComponent implements OnInit {
+  productos: any=[];
   public admin_funcion = false;
   public asistente_funcion = false;
   public cliente_funcion = false;
   public usuario_activo='';
   
-  @HostBinding('class') classes='row';  //necesario para desplegar un juego a la par de otro 
-  productos: any=[];
- 
-
-  constructor(private asociarService:AsociarService, private productosService: ProductosService,private router: Router,private activatedRoute: ActivatedRoute,private usuariosService:UsuariosService) { }
-
-  ngOnInit() { 
-    //Obtener Sesion
-    let  cod= this.usuariosService.getSesionCod()
-
-    if(this.usuariosService.getSesionNombre()==''){
-      console.log("No Logeado --productos-lista");
-      this.router.navigate(['/login']);
-    }
- 
-    
-    
-    
-    
-    
-      ///obtiene todos los productos
-        this.getProductos();
-      ///Obtiene datos del logueo
-        this.onCheckUser();
    
-    
+  @HostBinding('class') classes='row'; 
 
-    
+  constructor(private asociarService:AsociarService, private usuariosService: UsuariosService,private productosService: ProductosService, private router: Router, private activatedRoute:ActivatedRoute) { }
+
+  ngOnInit() {
+       //sino esta logueado me redirecciona al login
+       if(this.usuariosService.getSesionNombre()==''){
+        console.log("No Logeado --productos-lista");
+        this.router.navigate(['/login']);
+      }
+     
+    const params =this.activatedRoute.snapshot.params;
+  
+    this.getProductos();
+
+      ///Obtiene datos del logueo
+      this.onCheckUser();
+   
+
+
+
   }
 
- ////dar privilegios a a las funciones
+
+  getProductos(){
+    const params =this.activatedRoute.snapshot.params;
+    console.log(params.id);
+    this.productosService.getBuscar(params.id).subscribe(  /// 
+      res => {
+        //console.log(res);
+        this.productos = res;    ///aca almaceno la respuesta que me devuelve, y luego utilizarlo en la lista
+       },
+      err => console.error(err)
+    );
+  }
+
+
+
   onCheckUser(): void {
     if (this.usuariosService.getSesionTipo()=='1') {
       this.admin_funcion = true; 
@@ -62,18 +69,7 @@ export class ProductosListaComponent implements OnInit {
   }
 
 
-   /// Mostrar la lista de productos
-
-   getProductos(){
-    this.productosService.getProductos().subscribe(  /// 
-      res => {
-        this.productos = res;    ///aca almaceno la respuesta que me devuelve, y luego utilizarlo en la lista
-       },
-      err => console.error(err)
-    );
-  }
-
- ///Metodo para eliminar un juego atravez del id
+   ///Metodo para eliminar un juego atravez del id
  deleteProducto(id: string){
   this.productosService.deleteProducto(id).subscribe(  /// 
   res => {    
@@ -115,6 +111,5 @@ allasociacionProducto(id: string){
    );
   }
      
-
 
 }

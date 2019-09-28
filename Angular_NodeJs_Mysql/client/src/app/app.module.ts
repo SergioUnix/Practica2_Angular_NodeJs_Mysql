@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ProductoFormComponent } from './components/producto-form/producto-form.component';
 import { ProductosListaComponent } from './components/productos-lista/productos-lista.component';
-import { UsuarioFormComponent } from './components/usuario-form/usuario-form.component';
+
 import { FacturaFormComponent } from './components/factura-form/factura-form.component';
 import { ProductoProveedorComponent } from './components/producto-proveedor/producto-proveedor.component';
 import {ProductosService} from './servicios/productos.service';
@@ -16,6 +16,9 @@ import {ProveedoresService} from './servicios/proveedores.service';
 import { LoginComponent } from './components/login/login.component';
 import { UsuarioRegistroComponent } from './components/usuario-registro/usuario-registro.component';
 import { CarritoListaComponent } from './components/carrito-lista/carrito-lista.component';
+import { AsociarComponent } from './components/asociar/asociar.component';
+import { AsociarListaComponent } from './components/asociar-lista/asociar-lista.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
 
 
 @NgModule({
@@ -24,13 +27,15 @@ import { CarritoListaComponent } from './components/carrito-lista/carrito-lista.
     NavigationComponent,
     ProductoFormComponent,
     ProductosListaComponent,
-    UsuarioFormComponent,
     FacturaFormComponent,
     ProductoProveedorComponent,
     ProveedorFormComponent,
     LoginComponent,
     UsuarioRegistroComponent,
-    CarritoListaComponent
+    CarritoListaComponent,
+    AsociarComponent,
+    AsociarListaComponent,
+    BuscarComponent
     
 
   ],

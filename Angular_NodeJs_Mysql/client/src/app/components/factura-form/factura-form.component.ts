@@ -21,6 +21,10 @@ export class FacturaFormComponent implements OnInit {
   constructor(private facturasService: FacturasService,private productosService: ProductosService,private router: Router,private activatedRoute: ActivatedRoute,private usuariosService:UsuariosService) { }
 
   ngOnInit() {
+    if(this.usuariosService.getSesionNombre()==''){
+      console.log("No Logeado --productos-lista");
+      this.router.navigate(['/login']);
+    }
 
 
     this.getProductos();

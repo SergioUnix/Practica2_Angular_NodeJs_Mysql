@@ -23,7 +23,7 @@ export class ProductosService {
     return this.http.get(`${this.API_URI}/productos/carrito`);
      }
 
- //metodo para obtener productos
+ //metodo para obtener un producto
  getProducto(id: string){
    return this.http.get(`${this.API_URI}/productos/${id}`);
  
@@ -56,5 +56,10 @@ export class ProductosService {
     return this.http.put(`${this.API_URI}/productos/carritoVen/${id}`,[]);
         }        
 
+         //metodo para obtener productos
+ getBuscar(id: string){
+  return this.http.get(`${this.API_URI}/productos/buscar/${id}`);
+
+}
 
 }

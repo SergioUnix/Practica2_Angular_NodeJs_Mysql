@@ -63,8 +63,27 @@ public async updateVendido(req: Request, res: Response ){
     }
     
     
+    //Obtengo solo un producto pero por medio de su nombre
+    public async getBuscar(req: Request, res: Response ): Promise<any>{    
+        const {id} =req.params;
+        const productos = await pool.query("SELECT * FROM producto WHERE estado ='Disponible' and nombre =?", [id]);     
+        if(productos.length>0){
+            return res.json(productos);
+        }else{
+        res.status(404).json({text:'El producto no existe '});}   //minuto 1:27
+        }
 
 
+    // Obtengo una lista de los productos disponibles
+    public async reporte1(req: Request, res: Response ){ 
+        const productos =await pool.query("Select  producto.nombre, count(nombre)as vendidos FROM detalle_factura INNER JOIN producto ON detalle_factura.cod_producto_fk = producto.cod_producto group by nombre order by vendidos desc");
+        res.json(productos);  
+        }
+            // Obtengo una lista de los productos disponibles
+    public async reporte2(req: Request, res: Response ){ 
+        const productos =await pool.query("Select  nombre, count(nombre)as compras FROM factura INNER JOIN usuario ON factura.cod_usuario_fk = usuario.cod_usuario group by nombre order by nombre asc");
+        res.json(productos);  
+        }
 
 
 }

@@ -7,6 +7,9 @@ import {LoginComponent} from './components/login/login.component'; //importamos 
 import {UsuarioRegistroComponent} from './components/usuario-registro/usuario-registro.component'; //importamos componente
 import { CarritoListaComponent } from './components/carrito-lista/carrito-lista.component';
 import { FacturaFormComponent } from './components/factura-form/factura-form.component';
+import { AsociarComponent } from './components/asociar/asociar.component';
+import { AsociarListaComponent } from './components/asociar-lista/asociar-lista.component';
+import { BuscarComponent } from './components/buscar/buscar.component';
 
 
 const routes: Routes = [
@@ -52,10 +55,23 @@ const routes: Routes = [
     path: 'carrito',
     component: CarritoListaComponent
     },
-  {
+    {
     path: 'facturas',
     component: FacturaFormComponent
+    },
+    {
+    path: 'asociar',
+    component: AsociarComponent
+    },
+    {
+    path: 'asociar/Lista',
+    component: AsociarListaComponent
+    },
+    {
+    path: 'productos/buscar/:id',
+    component: BuscarComponent
     }
+  
 
         
 ];

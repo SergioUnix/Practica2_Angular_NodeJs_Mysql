@@ -1,0 +1,58 @@
+<div class="col-md-12">
+        <div class="card text-center">
+                <form>
+                        <h2> <label for="exampleInputEmail1">Realizar asociaciones</label></h2>
+                </form>
+            </div>   
+</div>
+
+
+
+<div class="col-md-4 offset-md-3">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <h3>Lista de Productos</h3>
+                </div>
+                <div class="form-group">
+                        <select id="producto" name="producto"  class="form-control"[(ngModel)]="asociacion.cod_producto_fk">
+                            <option *ngFor ="let producto of productos" [value]="producto.cod_producto" selected>
+                               Codigo: {{producto.cod_producto}}--{{producto.nombre}}</option>
+
+                        </select>  
+                                
+                    </div>
+
+
+            </form>
+        </div>
+    </div>   
+</div>
+
+
+<div class="col-md-4 offset-md-3">
+    <div class="card">
+        <div class="card-body">
+            <form>
+ 
+                <div class="form-group">
+                    <h3>Lista de Proveedores</h3>
+                </div>
+                <div class="form-group">
+                        <select id="proveedores" name="proveedores"  class="form-control"[(ngModel)]="asociacion.cod_proveedor_fk">
+                            <option *ngFor ="let proveedor of proveedores" [value]="proveedor.cod_proveedor" >
+                               Codigo: {{proveedor.cod_proveedor}}--{{proveedor.nombre}}</option>
+
+                        </select>  
+                                
+                    </div>
+
+                <button class="btn btn-success btn-block" (click)="guardar()">
+                    Guardar
+
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

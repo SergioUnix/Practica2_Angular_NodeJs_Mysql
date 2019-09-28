@@ -1,0 +1,29 @@
+<div class="col-md-12">
+        <div class="card text-center">
+                <form>
+                        <h2> <label for="exampleInputEmail1">Tabla de Asociaciones Realizadas</label></h2>
+                </form>
+
+
+</div>
+</div>
+
+<div class="col-md-4" *ngFor ="let aso of asociaciones">
+        <div class="card text-center">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <i class="fas fa-clipboard-list"></i> Numero de Asociación:  {{aso.cod_producto_proveedor}}
+
+            </div>
+            <img [src]="" class="card-img-top">
+            
+            <div class="card-body"   >
+                <i class="fas fa-tasks"></i>
+                <p>Nombre Producto : {{aso.nomProducto}}</p>
+                <p>Nombre Proveedor:  {{aso.nomProveedor}}</p>
+
+
+               
+            </div>
+        </div>
+    
+    </div>

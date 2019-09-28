@@ -8,7 +8,7 @@ import proveedoresRoutes from './routes/proveedoresRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
 import producto_proveedorRoutes from './routes/producto_proveedor';
 import facturasRoutes from './routes/factura';
-
+import asociarRoutes from './routes/Asociar';
 class Server {
 
     public app: Application ;
@@ -37,7 +37,8 @@ class Server {
         this.app.use('/api/usuarios',usuariosRoutes);
         this.app.use('/api/producto_proveedor', producto_proveedorRoutes);
         this.app.use('/api/facturas', facturasRoutes);
-      
+        this.app.use('/api/facturas', asociarRoutes);
+        this.app.use('/api/asociar', asociarRoutes);
     }
 
     
