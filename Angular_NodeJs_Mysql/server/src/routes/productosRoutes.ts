@@ -18,8 +18,8 @@ import {productosController} from '../controllers/productosController';
         this.router.put('/carritoDis/:id', productosController.updateDisponible); //acturaliza estado de producto
         this.router.put('/carritoVen/:id', productosController.updateVendido); //acturaliza estado de producto
         this.router.delete('/:id', productosController.delete);
-        this.router.get('/reporte1', productosController.list); ///reporte 1
-        this.router.get('/reporte2', productosController.list); ///reporte 2 
+        this.router.get('/reporte1/reporte/', productosController.reporte1); ///reporte 1
+        this.router.get('/reporte2/reporte/', productosController.reporte2); ///reporte 2 
         this.router.get('/buscar/:id', productosController.getBuscar);  ///Buscar producto envio nombre para consultarlo 
     }
 }

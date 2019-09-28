@@ -1,0 +1,67 @@
+<div class="col-md-12">
+        <div class="card text-center">
+                <form>
+                        <h2> <label for="exampleInputEmail1">Reporte 1</label></h2>
+                        <h3> <label for="exampleInputEmail1">Listado de todos los productos ordenados de los más comprados a los menos
+                                comprados</label></h3>
+                </form>
+
+
+</div>
+</div>
+
+<div class="col-md-4" *ngFor ="let aso of reporte1">
+        <div class="card text-center">
+            <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                 Dato
+
+            </div>
+            <img [src]="" class="card-img-top">
+            
+            <div class="card-body"   >
+                <i class="fas fa-tasks"></i>
+                <p>Producto : {{aso.nombre}}</p>
+                <p>Nnumero de vendidos:  {{aso.vendidos}}</p>
+
+
+               
+            </div>
+        </div>
+    
+    </div>
+
+
+
+
+
+    <div class="col-md-12">
+            <div class="card text-center">
+                    <form>
+                            <h2> <label for="exampleInputEmail1">Reporte 2</label></h2>
+                            <h3> <label for="exampleInputEmail1"> Listado de todos los clientes ordenados alfabéticamente y la cantidad de compras
+                                    que cada uno ha realizado</label></h3>
+                    </form>
+    
+    
+    </div>
+    </div>
+    
+    <div class="col-md-4" *ngFor ="let aso of reporte2">
+            <div class="card text-center">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                     Dato
+    
+                </div>
+                <img [src]="" class="card-img-top">
+                
+                <div class="card-body"   >
+                    <i class="fas fa-tasks"></i>
+                    <p>Nombre Producto : {{aso.nombre}}</p>
+                    <p>No. de Compras:  {{aso.compras}}</p>
+    
+    
+                   
+                </div>
+            </div>
+        
+        </div>

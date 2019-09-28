@@ -19,6 +19,7 @@ import { CarritoListaComponent } from './components/carrito-lista/carrito-lista.
 import { AsociarComponent } from './components/asociar/asociar.component';
 import { AsociarListaComponent } from './components/asociar-lista/asociar-lista.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { BuscarComponent } from './components/buscar/buscar.component';
     CarritoListaComponent,
     AsociarComponent,
     AsociarListaComponent,
-    BuscarComponent
+    BuscarComponent,
+    ReporteComponent
     
 
   ],

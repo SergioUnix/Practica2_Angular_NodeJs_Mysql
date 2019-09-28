@@ -10,6 +10,7 @@ import { FacturaFormComponent } from './components/factura-form/factura-form.com
 import { AsociarComponent } from './components/asociar/asociar.component';
 import { AsociarListaComponent } from './components/asociar-lista/asociar-lista.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,10 @@ const routes: Routes = [
     {
     path: 'productos/buscar/:id',
     component: BuscarComponent
+    },
+    {
+    path: 'productos/reportes',
+    component: ReporteComponent
     }
   
 

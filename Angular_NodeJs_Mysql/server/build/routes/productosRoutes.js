@@ -17,8 +17,8 @@ class ProductosRoutes {
         this.router.put('/carritoDis/:id', productosController_1.productosController.updateDisponible); //acturaliza estado de producto
         this.router.put('/carritoVen/:id', productosController_1.productosController.updateVendido); //acturaliza estado de producto
         this.router.delete('/:id', productosController_1.productosController.delete);
-        this.router.get('/reporte1', productosController_1.productosController.list); ///reporte 1
-        this.router.get('/reporte2', productosController_1.productosController.list); ///reporte 2 
+        this.router.get('/reporte1/reporte/', productosController_1.productosController.reporte1); ///reporte 1
+        this.router.get('/reporte2/reporte/', productosController_1.productosController.reporte2); ///reporte 2 
         this.router.get('/buscar/:id', productosController_1.productosController.getBuscar); ///Buscar producto envio nombre para consultarlo 
     }
 }

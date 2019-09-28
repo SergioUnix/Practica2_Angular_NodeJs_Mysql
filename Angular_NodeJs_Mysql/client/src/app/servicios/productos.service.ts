@@ -59,7 +59,14 @@ export class ProductosService {
          //metodo para obtener productos
  getBuscar(id: string){
   return this.http.get(`${this.API_URI}/productos/buscar/${id}`);
-
 }
+ //metodo para pedir productos
+  getReporte1(){
+  return this.http.get(`${this.API_URI}/productos/reporte1/reporte`);
+  }
+  //metodo para pedir productos
+ getReporte2(){
+  return this.http.get(`${this.API_URI}/productos/reporte2/reporte`);
+ }
 
 }
