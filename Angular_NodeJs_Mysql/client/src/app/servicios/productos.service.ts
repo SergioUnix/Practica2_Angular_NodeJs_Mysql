@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';     /// modulo encargado de hacer las peticiones http
-import {Producto} from '../modelos/Producto';          //importo tipo interfaz Game
+import {Producto} from '../modelos/Producto';          //importo tipo interfaz producto
 import { Observable } from 'rxjs';
 
 

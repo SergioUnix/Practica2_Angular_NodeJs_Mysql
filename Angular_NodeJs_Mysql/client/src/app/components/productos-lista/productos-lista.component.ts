@@ -73,17 +73,6 @@ export class ProductosListaComponent implements OnInit {
     );
   }
 
- ///Metodo para eliminar un juego atravez del id
- deleteProducto(id: string){
-  this.productosService.deleteProducto(id).subscribe(  /// 
-  res => {    
-    this.getProductos();     //pido el meodo de pintar los juegos para que se vea el cambio a la hora de eliminar uno y desaparezca
-   },
-  err => console.error(err)
-    );
-   }
-
-
 
 
 /// quitar asociaciones antes de eliminar producto, elimina todas las asociaciones del producto
@@ -92,13 +81,24 @@ allasociacionProducto(id: string){
     res => {  
       this.deleteProducto(id);  
       console.log('eliminamos todas las asociaciones antes de eliminar');
-      this.getProductos();
-      location.reload();  
+      
      },
     err => console.error(err)
       );
 
 }
+
+ ///Metodo para eliminar un juego atravez del id
+ deleteProducto(id: string){
+  this.productosService.deleteProducto(id).subscribe(  /// 
+  res => {    
+    this.getProductos();     //pido el meodo de pintar los juegos para que se vea el cambio a la hora de eliminar uno y desaparezca
+    location.reload(); 
+  },
+  err => console.error(err)
+    );
+   }
+
 
 
 

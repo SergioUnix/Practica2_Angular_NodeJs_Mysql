@@ -10,6 +10,9 @@ import { AsociarService } from 'src/app/servicios/asociar.service';
 })
 export class BuscarComponent implements OnInit {
   productos: any=[];
+
+  public hay_productos='No hay productos';
+
   public admin_funcion = false;
   public asistente_funcion = false;
   public cliente_funcion = false;
@@ -29,11 +32,15 @@ export class BuscarComponent implements OnInit {
      
     const params =this.activatedRoute.snapshot.params;
   
+  
+
+
     this.getProductos();
 
       ///Obtiene datos del logueo
       this.onCheckUser();
-   
+  
+  
 
 
 
@@ -47,8 +54,9 @@ export class BuscarComponent implements OnInit {
       res => {
         //console.log(res);
         this.productos = res;    ///aca almaceno la respuesta que me devuelve, y luego utilizarlo en la lista
-       },
-      err => console.error(err)
+        this.hay_productos='Productos Encontrados';  
+      },
+      err =>{ console.error(err); this.hay_productos='No hay productos'}
     );
   }
 
@@ -69,18 +77,6 @@ export class BuscarComponent implements OnInit {
   }
 
 
-   ///Metodo para eliminar un juego atravez del id
- deleteProducto(id: string){
-  this.productosService.deleteProducto(id).subscribe(  /// 
-  res => {    
-    this.getProductos();     //pido el meodo de pintar los juegos para que se vea el cambio a la hora de eliminar uno y desaparezca
-   },
-  err => console.error(err)
-    );
-   }
-
-
-
 
 /// quitar asociaciones antes de eliminar producto, elimina todas las asociaciones del producto
 allasociacionProducto(id: string){
@@ -88,13 +84,24 @@ allasociacionProducto(id: string){
     res => {  
       this.deleteProducto(id);  
       console.log('eliminamos todas las asociaciones antes de eliminar');
-      this.getProductos();
-      location.reload();  
+      
      },
     err => console.error(err)
       );
 
 }
+
+ ///Metodo para eliminar un juego atravez del id
+ deleteProducto(id: string){
+  this.productosService.deleteProducto(id).subscribe(  /// 
+  res => {    
+    this.getProductos();     //pido el meodo de pintar los juegos para que se vea el cambio a la hora de eliminar uno y desaparezca
+    location.reload(); 
+  },
+  err => console.error(err)
+    );
+   }
+
 
 
 
@@ -105,11 +112,13 @@ allasociacionProducto(id: string){
   agregarACarrito(id: string){
    this.productosService.updateProductoCarrito(id).subscribe(  /// 
    res => {    
-   this.getProductos();     //pido el meodo de pintar los juegos para que se vea el cambio a la hora de eliminar uno y desaparezca
+   ///this.getProductos();  
+   this.router.navigate(['/productos']);
   },
    err => console.error(err)
    );
   }
      
+
 
 }

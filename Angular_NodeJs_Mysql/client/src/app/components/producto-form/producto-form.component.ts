@@ -59,6 +59,7 @@ export class ProductoFormComponent implements OnInit {
   saveNewProducto(){
   //console.log(this.producto);
   delete this.producto.cod_producto;
+ delete this.producto.estado;
   this.productosService.saveProducto(this.producto)
     .subscribe(
       res=> {

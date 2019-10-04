@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';     /// modulo encargado de hac
 import {Usuario} from '../modelos/Usuario';          //importo tipo interfaz 
 import { Observable } from 'rxjs';
 import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -22,7 +23,7 @@ export class UsuariosService {
     cod_tipo_fk: 0,
   };
 
-constructor(private http: HttpClient) {   }
+constructor(private http: HttpClient,private router:Router) {   }
 //// guardo sesion en el localhost  una var con solo el codigo, otra con solo el nombre y la otra con el objeto total
 setSesion(usuariorecibido:Usuario){
   this.usuario=usuariorecibido; /// lleno mi variable tipo Usuario con los datos obtenidos
@@ -30,12 +31,17 @@ setSesion(usuariorecibido:Usuario){
   localStorage.setItem("nombre", usuariorecibido.nombre.toString());
   localStorage.setItem("tipo", usuariorecibido.cod_tipo_fk.toString());
   localStorage.setItem("usuario", JSON.stringify(this.usuario)) /// guardo en el localhost mi variable usuario de tipo Usuario
- }
+ 
+}
 OutSesion(){ 
 localStorage.setItem("cod_usuario", '');
 localStorage.setItem("nombre", '');
 localStorage.setItem("usuario", '')
   this.logeado=null;
+
+    this.router.navigate(['/login']);
+ 
+
 }
 
 getSesionNombre(){

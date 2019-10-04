@@ -66,7 +66,8 @@ guardar(){
 
   this.asociarService.saveAsociar(this.asociacion).subscribe(  /// 
     res => {
-      console.log('Asociación guardada')  
+      console.log('Asociación guardada') 
+      this.router.navigate(['/productos']); 
      },
     err => console.error(err)
   );

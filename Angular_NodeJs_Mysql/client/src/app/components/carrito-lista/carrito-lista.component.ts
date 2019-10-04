@@ -41,11 +41,9 @@ export class CarritoListaComponent implements OnInit {
   constructor(private facturasService: FacturasService,private productosService: ProductosService,private router: Router,private activatedRoute: ActivatedRoute,private usuariosService:UsuariosService) { }
 
   ngOnInit() {
-    let  cod= this.usuariosService.getSesionCod()
-    this.usuario=this.usuariosService.getSesionObjeto();
 
     if(this.usuariosService.getSesionNombre()==''){
-      console.log("No Logeado --productos-lista");
+      console.log("No Logeado --desde carrito lista");
       this.router.navigate(['/login']);
     }
  
@@ -110,7 +108,7 @@ for (let i of this.productos) {
   console.log(i.cod_producto); 
   this.quitarACarrito(i.cod_producto.toString());
   this.getProductosCarrito();
-  location.reload();
+  this.router.navigate(['/login']);
 }}
 
 
