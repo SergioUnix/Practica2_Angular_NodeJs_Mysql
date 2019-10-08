@@ -51,6 +51,8 @@ export class CarritoListaComponent implements OnInit {
     this.getProductosCarrito();
     ///Obtiene datos del logueo
     this.onCheckUser();
+    //corro el metodo para obtener usuario logueado
+    this.datosUsuario();
   }
 
 
@@ -69,6 +71,19 @@ export class CarritoListaComponent implements OnInit {
     this.asistente_funcion=true;
   }
   }
+
+  ///Obtener datos de Usuario en el objeto usuario
+  datosUsuario(){
+    let cod=this.usuariosService.getSesionCod();
+    this.usuariosService.getUsuario(cod.toString()).subscribe(  /// 
+      res => {
+        this.usuario = res;    ///aca almaceno la respuesta que me devuelve, y luego utilizarlo en la lista
+      },
+        err => console.error(err)
+      );
+
+  }
+
 
     /// Mostrar la lista de productos
 

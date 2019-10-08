@@ -1,0 +1,22 @@
+/// instrucciones para correr la aplicación
+
+client corre en la direccion localhost:4200
+Servidor corre en localhost:3000
+
+///compilar primero el cliente dentro de la carpeta client
+ng serve
+
+//en la primera terminal, se ejecuta dentro de la carpeta server
+npm run build
+
+//segunda terminal, se ejecuta dentro de la carpeta server
+npm run dev
+
+
+
+///crear componenetes
+ng g c components/nombre_componente
+/// Crear Servicios
+ng g s servicios/nombre_servicio
+
+
